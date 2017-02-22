@@ -31,7 +31,7 @@ class AssetsShortcode extends Shortcode
 
             if (in_array($type, ['css','js'])) {
                 foreach ($data as $key => $value) {
-                    if (!Uri::isValidUrl($value)) {
+                    if (!$this->isValidUrl($value)) {
                         $path_parts = pathinfo($value);
                         if ($path_parts['dirname'] == '.') {
                             $asset_page = $page;
@@ -55,5 +55,15 @@ class AssetsShortcode extends Shortcode
                 $this->shortcode->addAssets($type,  $content);
             }
         });
+    }
+
+    private function isValidUrl($url)
+    {
+        $regex = '/^(?:(https?|ftp|telnet):)?\/\/((?:[a-z0-9@:.-]|%[0-9A-F]{2}){3,})(?::(\d+))?((?:\/(?:[a-z0-9-._~!$&\'\(\)\*\+\,\;\=\:\@]|%[0-9A-F]{2})*)*)(?:\?((?:[a-z0-9-._~!$&\'\(\)\*\+\,\;\=\:\/?@]|%[0-9A-F]{2})*))?(?:#((?:[a-z0-9-._~!$&\'\(\)\*\+\,\;\=\:\/?@]|%[0-9A-F]{2})*))?/';
+        if (preg_match($regex, $url)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
