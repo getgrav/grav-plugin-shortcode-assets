@@ -1,0 +1,30 @@
+name: Shortcode Assets
+version: 0.1.0
+description: Easily add page-level CSS and JS assets via shortcode tags
+icon: plug
+author:
+  name: Team Grav
+  email: devs@getgrav.org
+homepage: https://github.com/getgrav/grav-plugin-shortcode-assets
+keywords: grav, plugin, etc
+bugs: https://github.com/getgrav/grav-plugin-shortcode-assets/issues
+docs: https://github.com/getgrav/grav-plugin-shortcode-assets/blob/develop/README.md
+license: MIT
+
+dependencies:
+  - shortcode-core
+
+form:
+  validation: strict
+  fields:
+    enabled:
+      type: toggle
+      label: Plugin status
+      highlight: 1
+      default: 0
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+
