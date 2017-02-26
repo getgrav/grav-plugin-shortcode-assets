@@ -1,3 +1,9 @@
+# v1.0.2
+##  02/26/2017
+
+1. [](#improved)
+    * Made `isValidUrl()` regex more permssive to allow for stream-based URLs
+    
 # v1.0.1
 ##  02/21/2017
 
